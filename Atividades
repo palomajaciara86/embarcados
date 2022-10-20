@@ -1,0 +1,53 @@
+//Curso : Bacharel em Engenharia de Controle e Automação
+// Disciplina: Sistemas Embarcados
+// Data:03 de outubro de 2022
+// Objetivo: controle das saidas digitais por meio de registradores
+// Autor: Paloma Jaciara
+
+
+
+void setup()
+{
+  DDRB = 0B111111; //Define se um pino é entrada ou saída
+  PORTB = 0B000000; // DEFINIR SEMPRE A ENTREDA
+ 
+}
+
+
+void firstEffect (void);
+void secondEffect (void);
+
+
+void loop()
+{
+  //PORTB = PORTB | 0B001111;// OPERAÇÃO | OU
+PORTB |=(1<<3); //DESLOQUE O BIT 1 4X PARA ESQUERDA
+  int option = 1;
+   
+  switch (option)
+  {
+    case 1:
+      firstEffect();
+      break;
+    case 2:
+      secondEffect();
+      break;
+    default:
+       break;
+  }
+ 
+}
+void firstEffect (void)
+{
+  PORTB = 0x0;//REGISTRADOR DE CONTROLE DO PORTX
+  delay(1000);
+  PORTB = 0x5;
+  delay(1000);
+}
+  void secondEffect (void)
+{
+  PORTB = 0x0;//REGISTRADOR DE CONTROLE DO PORTX
+  delay(1000);
+  PORTB = 0x6;
+  delay(1000);
+}
